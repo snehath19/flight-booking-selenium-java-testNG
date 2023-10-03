@@ -19,7 +19,6 @@ public class Filterpage extends FilterPageElements
         driver.manage().window().maximize();
         driver.get(url);
 
-
         String currentUrl = driver.getCurrentUrl();
         if (url.contains(currentUrl)) {
             System.out.println("Page landed correctly");
@@ -246,7 +245,6 @@ public class Filterpage extends FilterPageElements
         }
     }
 
-
     public void userIsOnFlightDetailsPages() throws InterruptedException {
        /* Helper.selectFlight();
         Thread.sleep(10000);*/
@@ -267,14 +265,14 @@ public class Filterpage extends FilterPageElements
         Helper.scrollUpDown(500);
     }
 
-    public void userTriesToEnterTheContactDetails() throws InterruptedException {
+    public void userTriesToEnterTheContactDetails(String emails, String conformEmails,String phones,String addresss,String postcodes,String citys) throws InterruptedException {
 
-        email.sendKeys("hh@gmail.com");
-        conformEmail.sendKeys("hj");
-        phone.sendKeys("5634567854");
-        address.sendKeys("er");
-        postcode.sendKeys("bvc");
-        city.sendKeys("qwe");
+        email.sendKeys(emails);
+        conformEmail.sendKeys(conformEmails);
+        phone.sendKeys(phones);
+        address.sendKeys(addresss);
+        postcode.sendKeys(postcodes);
+        city.sendKeys(citys);
         Thread.sleep(8000);
     }
 

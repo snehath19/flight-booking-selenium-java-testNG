@@ -1,22 +1,31 @@
 package TestPages;
 
 import Utilities.Driver;
+import Utilities.ExcelDataProvider;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import pages.Filterpage;
 import pages.Helper;
 
+import java.io.IOException;
+
 public class FilterTest extends Driver {
 
     Filterpage FP;
-
+    String FlightBookingDataProvider="/Users/praise_joseph/Documents/Sneha/Projects/FlightBookingSeleniumJavaTestng/src/main/resources/Book1.xlsx";
     @BeforeTest
     public void setup() {
 
         Helper.setUpDriver();
         FP = new Filterpage();
     }
+    @AfterClass
+    public void teardown() {
 
+        Helper.tearDown();
+    }
     @Test(priority = 1)
     public void CheckTheUrlIsCorrectOrNotTest() throws InterruptedException {
 
@@ -158,21 +167,30 @@ public class FilterTest extends Driver {
     public void userIsOnFlightDetailsPagesTest() throws InterruptedException {
         FP.userIsOnFlightDetailsPages();
     }
+    @Test(priority = 27, dataProvider = "AdultDetails")
+    public void userTriesToEnterTheAdultDetailsTest(String name, String surname) throws InterruptedException {
 
-    @Test(priority = 27)
-    public void userTriesToEnterTheAdultDetailsTest() throws InterruptedException
+        FP.userTriesToEnterTheAdultDetails(name,surname);
+    }
+    @DataProvider(name="AdultDetails")
+    public Object[][] getDataFromDataProviderAdultDetails() throws IOException
     {
-        FP.userTriesToEnterTheAdultDetails("anu","rv");
+        return ExcelDataProvider.getDataArray(FlightBookingDataProvider,"AdultDetails");
     }
 
     @Test(priority = 28)
     public void userIsOnFlightDetailsPageTest() throws InterruptedException {
         FP.userIsOnFlightDetailsPage();
     }
+    @Test(priority = 29, dataProvider = "ContactDetails")
+    public void userTriesToEnterTheContactDetailsTest(String email, String conformEmail,String phone,String address,String postcode,String city) throws InterruptedException {
 
-    @Test(priority = 29)
-    public void userTriesToEnterTheContactDetailsTest() throws InterruptedException {
-        FP.userTriesToEnterTheContactDetails();
+        FP.userTriesToEnterTheContactDetails(email,conformEmail,phone,address,postcode,city);
+    }
+    @DataProvider(name="ContactDetails")
+    public Object[][] getDataFromDataProviderContactDetails() throws IOException
+    {
+        return ExcelDataProvider.getDataArray(FlightBookingDataProvider,"ContactDetails");
     }
 }
 
