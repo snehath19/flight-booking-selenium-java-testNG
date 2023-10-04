@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Phase 1-Parallel Test Suite">
-    <test name="Parallel">
-<!--        <parameter name="browser" value="chrome"/>-->
+<suite name="Flight Booking Test Suite" >
+    <test name="Flight Booking Test">
         <classes>
-            <class name="TestPages.FilterTest"/>
+            <class name="testPages.FilterTest"/>
+            <class name="testPages.SeatSelectionTest"/>
         </classes>
     </test>
 </suite>

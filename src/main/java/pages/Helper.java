@@ -1,6 +1,6 @@
 package pages;
 
-import Elements.HelperPageElements;
+import elements.HelperPageElements;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
@@ -27,6 +27,47 @@ public class Helper extends HelperPageElements {
         }
         helperClass = null;
     }
+
+    public static void iAmOnPageAndCheckTheUrlIsCorrectOrNot() throws InterruptedException {
+
+        String url="https://www.opodo.co.uk/";
+        driver.manage().window().maximize();
+        driver.get(url);
+
+        String currentUrl = driver.getCurrentUrl();
+        if (url.contains(currentUrl)) {
+            System.out.println("Page landed correctly");
+        } else {
+            System.out.println("Incorrect landing");
+        }
+        Thread.sleep(3000);
+        cookieRejectBtn.click();
+
+    }
+
+    public static void selectSourceAsDestinationAsAndTravelDate(String source, String destination) throws InterruptedException
+    {
+        Thread.sleep(3000);
+        sourceTextbox.click();
+        Thread.sleep(2000);
+        sourceDataSelection.sendKeys(source);
+        sourceDataSelection.click();
+        Thread.sleep(2000);
+        destinationTextbox.click();
+        Thread.sleep(2000);
+        destinationDataSelection.sendKeys(destination);
+        Thread.sleep(2000);
+        destinationDataSelection.click();
+        Thread.sleep(2000);
+        departureCalenderClick.click();
+        Thread.sleep(2000);
+        departureDateSelection.click();
+        calenderDoneButton.click();
+        Thread.sleep(2000);
+        searchFlight.click();
+        Thread.sleep(18000);
+    }
+
     public static void scrollUpDown(int scrollValue) {
         for (int i = 0; i < scrollValue; i++) {
             ((JavascriptExecutor) driver).executeScript("window.scrollBy(0,1)", "");
@@ -88,7 +129,7 @@ public class Helper extends HelperPageElements {
 
     public static void typeOfSeat() throws InterruptedException {
         Thread.sleep(3000);
-        String selectedSeats = SelectedSeatElement.getText();
+        String selectedSeats = selectedSeatElement.getText();
         System.out.println("Selected seats :" + selectedSeats);
         Character seatLetter;
         if (adultNumber == 2) {

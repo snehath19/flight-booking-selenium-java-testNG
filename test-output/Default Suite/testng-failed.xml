@@ -3,12 +3,12 @@
 <suite name="Failed suite [Default Suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="FlightBookingSeleniumJavaTestng(failed)">
     <classes>
-      <class name="TestPages.FilterTest">
+      <class name="testPages.FilterTest">
         <methods>
           <include name="CheckTheUrlIsCorrectOrNotTest"/>
           <include name="s"/>
         </methods>
-      </class> <!-- TestPages.FilterTest -->
+      </class> <!-- testPages.FilterTest -->
     </classes>
   </test> <!-- FlightBookingSeleniumJavaTestng(failed) -->
 </suite> <!-- Failed suite [Default Suite] -->
